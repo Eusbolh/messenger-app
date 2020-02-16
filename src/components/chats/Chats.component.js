@@ -13,9 +13,9 @@ class Chats extends Component {
 
   renderChat = chat => (
     <Button
-      classes={appendClasses('c-chats-chat', this.isChatSelected(chat.id) ? 'c-chats-chat--selected' : null)}
+      classes={appendClasses('c-chats-chat', this.isChatSelected(chat.chatID) ? 'c-chats-chat--selected' : null)}
       key={chat.id}
-      onClick={() => this.selectChat(chat.id)}
+      onClick={() => this.selectChat(chat.chatID)}
     >
       <div className="c-chats-chat-contact-avatar-container">
         <img

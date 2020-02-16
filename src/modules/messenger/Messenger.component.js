@@ -18,9 +18,7 @@ class Messenger extends Component {
             </div>
           </div>
           <div className="c-messenger-right">
-            <div className="c-messenger-chat-content">
-              <ChatContainer />
-            </div>
+            <ChatContainer />
           </div>
         </div>
       </div>

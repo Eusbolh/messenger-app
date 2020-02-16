@@ -24,19 +24,55 @@ const initialState = {
       ],
     }, {
       chatID: '2',
-      users: ['test1', 'test2'],
+      users: ['test3', 'test2'],
       messages: [
         {
-          senderID: 'test1',
-          message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
+          senderID: 'test3',
+          message: 'Lorem ipsum dolor sit amet,.',
           timestamp: '16 Feb, 19:16',
         }, {
-          senderID: 'test1',
-          message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
+          senderID: 'test3',
+          message: 'Lorem scing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
           timestamp: '16 Feb, 19:16',
         }, {
           senderID: 'test2',
-          message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
+          message: 'elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
+          timestamp: '16 Feb, 19:16',
+        }, {
+          senderID: 'test3',
+          message: 'Lorem ipsum dolor sit amet,.',
+          timestamp: '16 Feb, 19:16',
+        }, {
+          senderID: 'test3',
+          message: 'Lorem scing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
+          timestamp: '16 Feb, 19:16',
+        }, {
+          senderID: 'test2',
+          message: 'elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
+          timestamp: '16 Feb, 19:16',
+        }, {
+          senderID: 'test3',
+          message: 'Lorem ipsum dolor sit amet,.',
+          timestamp: '16 Feb, 19:16',
+        }, {
+          senderID: 'test3',
+          message: 'Lorem scing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
+          timestamp: '16 Feb, 19:16',
+        }, {
+          senderID: 'test2',
+          message: 'elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
+          timestamp: '16 Feb, 19:16',
+        }, {
+          senderID: 'test3',
+          message: 'Lorem ipsum dolor sit amet,.',
+          timestamp: '16 Feb, 19:16',
+        }, {
+          senderID: 'test3',
+          message: 'Lorem scing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
+          timestamp: '16 Feb, 19:16',
+        }, {
+          senderID: 'test2',
+          message: 'elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
           timestamp: '16 Feb, 19:16',
         },
       ],
@@ -56,7 +92,7 @@ export default (state = initialState, action) => {
     case MESSENGER_ACTIONS.SEND_MESSAGE:
       updatedChats = [...state.chats];
       updatedChats
-        .find(chat => chat.id === action.payload.chatID)
+        .find(chat => chat.chatID === action.payload.chatID)
         .messages
         .push({
           senderID: action.payload.senderID,
