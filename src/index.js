@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import ReduxStore from 'state/store/ReduxStore';
 import Routes from 'routing/Routes';
 import { IntlProvider } from 'react-intl';
-import localeEN from 'common/i18n/en.json'
+import localeEN from 'common/i18n/en.json';
 import './index.scss';
 
 export const history = createBrowserHistory({ //eslint-disable-line
