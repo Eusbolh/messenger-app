@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@blueprintjs/core": "^3.10.0",
-    "@blueprintjs/docs-theme": "^3.0.4",
-    "@blueprintjs/select": "^3.7.0",
     "axios": "^0.18.0",
     "formik": "^1.5.7",
     "history": "^4.7.2",
@@ -21,9 +18,7 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "cypress": "^3.4.0",
     "eslint-config-airbnb": "^17.0.0",
-    "eslint-plugin-cypress": "^2.6.0",
     "redux-devtools-extension": "^2.13.7"
   },
   "scripts": {
@@ -32,8 +27,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "cypress:open": "./node_modules/.bin/cypress open"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
