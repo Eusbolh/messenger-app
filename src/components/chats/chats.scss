@@ -1,0 +1,58 @@
+.c-chats-component {
+
+  .c-chats-list {
+
+    .c-chats-chat {
+      background-color: $light-gray5;
+      border: 1px solid $border-color;
+      display: flex;
+      padding: 12px;
+
+      .c-chats-chat-contact-avatar-container {
+        margin-right: 8px;
+
+        .c-chats-chat-contact-avatar {
+          border: 2px solid $light-gray1;
+          border-radius: 50%;
+          height: 50px;
+          width: 50px;
+        }
+      }
+
+      .c-chats-chat-content {
+        display: flex;
+        flex-direction: column;
+        width: -webkit-fill-available;
+        width: -moz-available;
+
+        .c-chats-chat-info {
+          display: flex;
+
+          .c-chats-chat-contact-name {
+            font-weight: 500;
+          }
+
+          .c-chats-chat-last-message-date {
+            color: $gray1;
+            font-size: 12px;
+            margin-left: auto;
+          }
+        }
+
+        .c-chats-chat-last-message {
+          color: $gray1;
+          font-size: 14px;
+          text-align: left;
+        }
+      }
+    }
+    
+    .c-chats-chat:not(:last-child) {
+      border-bottom: none;
+    }
+
+    .c-chats-chat:hover {
+      background-color: $light-gray4;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import UtilityBar from 'components/utilityBar/UtilityBar.component';
+import Chats from 'components/chats/Chats.component';
 
 class Messenger extends Component {
   render() {
@@ -11,7 +12,9 @@ class Messenger extends Component {
             <div className="c-messenger-utility-bar">
               <UtilityBar />
             </div>
-            <div className="c-messenger-people">people</div>
+            <div className="c-messenger-chats">
+              <Chats />
+            </div>
           </div>
           <div className="c-messenger-right">right</div>
         </div>
