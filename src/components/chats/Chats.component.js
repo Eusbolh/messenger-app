@@ -4,20 +4,6 @@ import UserAvatar from 'common/assets/user_avatar_2.png';
 import Button from 'components/button/Button.component';
 import { appendClasses } from 'common/helpers';
 
-const chats = [
-  {
-    id: 'asdsadasdsadsad',
-    contactName: 'Lorem Ipsum',
-    lastMessageContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    lastMessageDate: '2 hours ago',
-  }, {
-    id: 'qweqewqeqe',
-    contactName: 'Lorem Ipsum',
-    lastMessageContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    lastMessageDate: '2 hours ago',
-  },
-];
-
 class Chats extends Component {
   isChatSelected = chatID => this.props.selectedChatID === chatID;
 
@@ -40,19 +26,49 @@ class Chats extends Component {
       </div>
       <div className="c-chats-chat-content">
         <div className="c-chats-chat-info">
-          <div className="c-chats-chat-contact-name">{chat.contactName}</div>
-          <div className="c-chats-chat-last-message-date">{chat.lastMessageDate}</div>
+          <div className="c-chats-chat-contact-name">
+            {
+              chat
+              && chat.users
+              && chat.users
+                .filter(userID => userID !== this.props.userID)
+                .map((user, index) => {
+                  if (index === chat.users.length - 2) {
+                    return user;
+                  }
+                  return `${user}, `;
+                })
+            }
+          </div>
+          <div className="c-chats-chat-last-message-date">
+            {
+              chat
+              && chat.messages
+              && chat.messages[chat.messages.length - 1]
+              && chat.messages[chat.messages.length - 1].timestamp
+            }
+          </div>
         </div>
-        <div className="c-chats-chat-last-message">{chat.lastMessageContent}</div>
+        <div className="c-chats-chat-last-message">
+          {
+            chat
+            && chat.messages
+            && chat.messages[chat.messages.length - 1]
+            && chat.messages[chat.messages.length - 1].message
+          }
+        </div>
       </div>
     </Button>
   )
 
   render() {
+    const { ...props } = this.props;
     return (
       <div className="c-chats-component">
         <div className="c-chats-list">
-          {chats.map(chat => this.renderChat(chat))}
+          {props.chats
+            .filter(chat => chat && chat.users.includes(props.userID))
+            .map(chat => this.renderChat(chat))}
         </div>
       </div>
     );
@@ -61,13 +77,17 @@ class Chats extends Component {
 
 Chats.propTypes = {
   /* Objects */
+  chats: PropTypes.arrayOf(PropTypes.shape({})),
   selectedChatID: PropTypes.string,
+  userID: PropTypes.string,
   /* Functions */
   selectChat: PropTypes.func.isRequired,
 };
 
 Chats.defaultProps = {
+  chats: null,
   selectedChatID: null,
+  userID: null,
 };
 
 export default Chats;
