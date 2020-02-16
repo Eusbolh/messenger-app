@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import UserAvatar from 'common/assets/user_avatar_2.png';
 import Button from 'components/button/Button.component';
+import { appendClasses } from 'common/helpers';
 
 const chats = [
   {
@@ -18,10 +19,17 @@ const chats = [
 ];
 
 class Chats extends Component {
+  isChatSelected = chatID => this.props.selectedChatID === chatID;
+
+  selectChat = (chatID) => {
+    this.props.selectChat({ chatID });
+  }
+
   renderChat = chat => (
     <Button
-      classes="c-chats-chat"
+      classes={appendClasses('c-chats-chat', this.isChatSelected(chat.id) ? 'c-chats-chat--selected' : null)}
       key={chat.id}
+      onClick={() => this.selectChat(chat.id)}
     >
       <div className="c-chats-chat-contact-avatar-container">
         <img
@@ -52,9 +60,14 @@ class Chats extends Component {
 }
 
 Chats.propTypes = {
+  /* Objects */
+  selectedChatID: PropTypes.string,
+  /* Functions */
+  selectChat: PropTypes.func.isRequired,
 };
 
 Chats.defaultProps = {
+  selectedChatID: null,
 };
 
 export default Chats;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import UtilityBar from 'components/utilityBar/UtilityBar.component';
-import Chats from 'components/chats/Chats.component';
+import ChatsContainer from 'components/chats/Chats.container';
 
 class Messenger extends Component {
   render() {
@@ -13,7 +13,7 @@ class Messenger extends Component {
               <UtilityBar />
             </div>
             <div className="c-messenger-chats">
-              <Chats />
+              <ChatsContainer />
             </div>
           </div>
           <div className="c-messenger-right">right</div>

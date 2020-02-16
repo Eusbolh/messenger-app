@@ -47,11 +47,19 @@
       }
     }
     
+    .c-chats-chat:first-child {
+      border-top: none;
+    }
+    
     .c-chats-chat:not(:last-child) {
       border-bottom: none;
     }
 
     .c-chats-chat:hover {
+      background-color: $light-gray3;
+    }
+
+    .c-chats-chat--selected {
       background-color: $light-gray4;
     }
   }
