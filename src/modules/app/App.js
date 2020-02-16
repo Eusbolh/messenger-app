@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { Route, Switch } from 'react-router-dom';
+import MessengerContainer from 'modules/messenger/Messenger.container';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <FormattedMessage id="app.title" />
+      <div className="c-app-module">
+        <div className="c-app-content-container">
+          <Switch>
+            <Route path="/" component={MessengerContainer} />
+          </Switch>
+        </div>
       </div>
     );
   }

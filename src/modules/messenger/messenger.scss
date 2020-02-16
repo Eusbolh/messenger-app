@@ -1,0 +1,41 @@
+.c-messenger-module {
+  --border-radius: 3px;
+  --utility-bar-height: 100px;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+
+  .c-messenger-content {
+    background-color: $light-gray5;
+    border: 1px solid $border-color;
+    border-radius: var(--border-radius);
+    display: flex;
+    height: 80%;
+    width: 80%;
+
+    .c-messenger-left {
+      border-right: 1px solid $border-color;
+      height: 100%;
+      width: 30%;
+      
+      .c-messenger-utility-bar {
+        background-color: $light-gray3;
+        border-bottom: 1px solid $border-color;
+        border-radius: var(--border-radius) 0 0 0;
+        height: var(--utility-bar-height);
+      }
+
+      .c-messenger-people {
+        background-color: $light-gray4;
+        border-radius: 0 0 0 var(--border-radius);
+        height: calc(100% - var(--utility-bar-height) - 1px); // 1px for border
+      }
+    }
+
+    .c-messenger-right {
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      width: 70%;
+    }
+  }
+}
