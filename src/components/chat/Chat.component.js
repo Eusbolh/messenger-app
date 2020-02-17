@@ -8,6 +8,12 @@ class Chat extends Component {
     message: '',
   }
 
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.selectedChatID !== this.props.selectedChatID) {
+      this.scrollToBottom();
+    }
+  }
+
   getContactName = (chats, chatID, userID) => {
     const selectedChat = chats && chats.find(chat => chat.chatID === chatID);
     if (!selectedChat) {
@@ -30,6 +36,13 @@ class Chat extends Component {
     this.setState({ message: e.target.value });
   }
 
+  scrollToBottom = () => {
+    const messagesDiv = document.getElementById('c-chat-messages');
+    if (messagesDiv) {
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+  }
+
   sendMessage = (e) => {
     e.preventDefault();
     this.props.sendMessage({
@@ -38,6 +51,7 @@ class Chat extends Component {
       message: this.state.message,
     });
     this.setState({ message: '' });
+    this.scrollToBottom();
   }
 
   renderChatHead = (chats, chatID, userID) => (
@@ -66,7 +80,7 @@ class Chat extends Component {
     const { messages } = selectedChat;
     if (messages) {
       return (
-        <div className="c-chat-messages">
+        <div className="c-chat-messages" id="c-chat-messages">
           {messages.map((message, index) => (
             <div
               className={appendClasses('c-chat-message', message.senderID === userID ? 'c-chat-message--sender' : 'c-chat-message--receiver')}

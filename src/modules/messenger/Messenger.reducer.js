@@ -11,15 +11,15 @@ const initialState = {
         {
           senderID: 'test1',
           message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 06:15 PM',
         }, {
           senderID: 'test1',
           message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 06:15 PM',
         }, {
           senderID: 'test2',
           message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 09:15 PM',
         },
       ],
     }, {
@@ -29,51 +29,51 @@ const initialState = {
         {
           senderID: 'test3',
           message: 'Lorem ipsum dolor sit amet,.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 06:15 PM',
         }, {
           senderID: 'test3',
           message: 'Lorem scing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 06:15 PM',
         }, {
           senderID: 'test2',
           message: 'elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 07:12 PM',
         }, {
           senderID: 'test3',
           message: 'Lorem ipsum dolor sit amet,.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 07:12 PM',
         }, {
           senderID: 'test3',
           message: 'Lorem scing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 08:01 PM',
         }, {
           senderID: 'test2',
           message: 'elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 08:01 PM',
         }, {
           senderID: 'test3',
           message: 'Lorem ipsum dolor sit amet,.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 08:01 PM',
         }, {
           senderID: 'test3',
           message: 'Lorem scing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 08:01 PM',
         }, {
           senderID: 'test2',
           message: 'elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 08:01 PM',
         }, {
           senderID: 'test3',
           message: 'Lorem ipsum dolor sit amet,.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 08:01 PM',
         }, {
           senderID: 'test3',
           message: 'Lorem scing elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 08:01 PM',
         }, {
           senderID: 'test2',
           message: 'elit. Vestibulum porttitor augue enim, sed interdum lectus mattis interdum.',
-          timestamp: '16 Feb, 19:16',
+          timestamp: '16.02.2020 08:01 PM',
         },
       ],
     },
@@ -82,6 +82,7 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+  let targetChat = null;
   let updatedChats = null;
   switch (action.type) {
     case MESSENGER_ACTIONS.SELECT_CHAT:
@@ -91,14 +92,14 @@ export default (state = initialState, action) => {
       };
     case MESSENGER_ACTIONS.SEND_MESSAGE:
       updatedChats = [...state.chats];
-      updatedChats
-        .find(chat => chat.chatID === action.payload.chatID)
-        .messages
+      targetChat = updatedChats.find(chat => chat.chatID === action.payload.chatID);
+      targetChat.messages
         .push({
           senderID: action.payload.senderID,
           message: action.payload.message,
           timestamp: formatDate(new Date()),
         });
+      updatedChats = [targetChat, ...updatedChats.filter(chat => chat.chatID !== action.payload.chatID)];
       return {
         ...state,
         chats: updatedChats,
